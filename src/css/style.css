@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-gray-800 {
+  background-color: #202020;
+}
+
+.w-600 {
+  width: 600px;
+}
+
+.h-600 {
+  height: 600px;
+}
+
+.b-02 {
+  border-radius: 0.2em;
+}
+
+.b-05 {
+  border-radius: 0.5em;
+}
+
+.b-10 {
+  border-radius: 1.0em;
+}
