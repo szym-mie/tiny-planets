@@ -1,7 +1,11 @@
 class Float {
-  constructor(gl, value) {
-    this.gl = gl;
+  constructor(value) {
+    this.gl = null;
     this.value = value;
+  }
+
+  withContext(gl) {
+    this.gl = gl;
   }
 
   bind(target) {

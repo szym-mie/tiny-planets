@@ -6,8 +6,9 @@ class Mesh {
     this.vertexArray = vertexArray;
   }
 
-  draw() {
+  draw(camera) {
     this.shader.active();
+    camera.bind(this.shader.to('u_VPMatrix'));
     this.time.bind(this.shader.to('u_Time'));
     this.texture.bind(this.shader.to('u_Texture'), 0);
     this.vertexArray.bind(this.shader.to('a_Position'));

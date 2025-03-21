@@ -1,5 +1,6 @@
 class Vector3 {
   constructor(x, y, z) {
+    this.gl = null;
     this.x = x;
     this.y = y;
     this.z = z;
@@ -25,14 +26,21 @@ class Vector3 {
     return this.scale(-1.0);
   }
 
-  normal() {
-    const k = this.x * this.x + this.y * this.y + this.z * this.z;
-    if (k === 0.0) return Vector3.zero;
-    return this.scale(1.0 / k);
+  lengthSquared() {
+    const x = this.x;
+    const y = this.y;
+    const z = this.z;
+    return x * x + y * y + z * z;
   }
 
   length() {
-    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+    return Math.sqrt(this.lengthSquared());
+  }
+
+  normal() {
+    const k = this.lengthSquared();
+    if (k === 0.0) return Vector3.zero;
+    return this.scale(1.0 / k);
   }
 
   dot(v) {
@@ -41,6 +49,14 @@ class Vector3 {
 
   toArray() {
     return [this.x, this.y, this.z];
+  }
+
+  withContext(gl) {
+    this.gl = gl;
+  }
+
+  bind(target) {
+    this.gl.uniform3f(target, this.x, this.y, this.z);
   }
 
   static zero = new Vector3(0.0, 0.0, 0.0);
